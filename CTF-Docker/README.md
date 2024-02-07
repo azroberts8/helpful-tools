@@ -7,15 +7,17 @@ Feel free to make pull requests to add additional tools and capabilities to this
 ## Setting Up
 
 ### Install Docker
-If you do not already have Docker installed on your system, you can get the latest version from (https://www.docker.com/products/docker-desktop/).
+If you do not already have Docker installed on your system, you can get the latest version from https://www.docker.com/products/docker-desktop/.
 
 ### Create Shared Directory
-Once you have docker installed, create a CTF folder in a memorable place on your computer. We will be mounting this folder into our Docker container so it is easy to transfer files between our host machine and our Docker container.
+Once you have docker installed, create a folder for CTF work in a memorable place on your computer. We will be mounting this folder into our Docker container so it is easy to transfer files between our host machine and our Docker container.
 
 ### Running the Docker Image
-You can start your CTF Docker container by opening a terminal or command prompt window and running the command below. Make sure to replace `/your/directory` with the absolute path to the directory we created in the previous step.
+We can start our CTF Docker container by opening a terminal or command prompt and executing the command below. This command launches a new Docker container called "ctf" from my pre-made image `azroberts/pwndocker` and automatically mounts our host ctf folder at the location `/ctf/work` inside the container. It will launch bash from inside the container and provide us with an interactive shell to control the container.
+
+**Note:** Make sure to replace `/your/directory` with the absolute path to the folder we created in the previous step. If you do not know the absolute path, you can drag the folder from your file browser to youre terminal window and it should auto-fill the path for you. If you encounter an issue where you do not have permission to execute the docker command, on Mac and Linux prefix the command with `sudo` or on Windows reopen command prompt as administrator.
 ```bash
-docker run -it -v /your/directory:/ctf/work azroberts/pwndocker /bin/bash
+docker run -it -v /your/directory:/ctf/work --name ctf azroberts/pwndocker /bin/bash
 ```
 
 **Note:** If you do not know the absolute path to the folder you created, you can optionally drag the folder from your file browser to your terminal or command prompt window and it should auto-fill the absolute path for you.
@@ -30,8 +32,8 @@ This environment is an extension of [skysider/pwndocker](https://github.com/skys
 
 - sudo (for when muscle memory takes control)
 - nano (personal preference over vim)
-- binwalk
-- dnsutils
-- steghide
-- hexcurse (basic hex editor)
-- nmap
+- [binwalk](https://github.com/ReFirmLabs/binwalk)
+- [dnsutils](https://packages.debian.org/buster/dnsutils)
+- [steghide](https://github.com/StefanoDeVuono/steghide)
+- [hexcurse](https://github.com/LonnyGomes/hexcurse) (basic hex editor)
+- [nmap](https://github.com/nmap/nmap)
