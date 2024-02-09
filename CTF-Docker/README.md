@@ -37,3 +37,5 @@ This environment is an extension of [skysider/pwndocker](https://github.com/skys
 - [steghide](https://github.com/StefanoDeVuono/steghide)
 - [hexcurse](https://github.com/LonnyGomes/hexcurse) (basic hex editor)
 - [nmap](https://github.com/nmap/nmap)
+- [john](https://github.com/openwall/john/tree/bleeding-jumbo) (John The Ripper password cracker)
+- [hashcat](https://github.com/hashcat/hashcat) (password cracker)
