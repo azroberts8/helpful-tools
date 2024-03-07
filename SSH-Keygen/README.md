@@ -43,3 +43,7 @@ echo "YOUR-ENTIRE-KEY-HERE" >> ~/.ssh/authorized_keys
 ```
 
 You should now be able to access your SSH server and push commits to your Github repositories from your machine without the need of entering a username and password or configuring git credentials on your machine.
+
+## Additional Resources
+
+This page is a good resource for generating SSH keys using a Yubikey https://rameerez.com/how-to-use-yubikey-to-log-in-via-ssh-to-server/
