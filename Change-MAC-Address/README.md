@@ -15,4 +15,4 @@ Each command should execute without throwing an error. Your newly set MAC addres
 3. Change the MAC address: `sudo ip link set dev <device-name> address <new-mac-address>`
 4. Enable your network device: `sudo ip link set dev <device-name> up`
 
-This method uses the `ip` command as the `ipconfig` command is being depricated in favor of this tool.
+This method uses the `ip` command as the `ifconfig` command is being depricated in favor of this tool.
