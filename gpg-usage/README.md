@@ -91,5 +91,5 @@ Note: This command will sign the message with your private key as well as encryp
 ### Decrypting a Message
 
 ```bash
-gpg <filename>.asc
+gpg --decrypt --output <decrypted-message> <encrypted-file>.asc
 ```
