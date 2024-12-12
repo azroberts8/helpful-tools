@@ -1,5 +1,17 @@
 # Creating & Using GPG Keys (Cheat Sheet)
 
+### MacOS Installation
+
+#### GPG
+```bash
+brew install gnupg
+```
+
+#### Pinentry (store GPG key password in Keychain)
+```bash
+brew install pinentry-mac
+```
+
 ### Generating GPG Keys
 
 ```bash
@@ -93,3 +105,40 @@ Note: This command will sign the message with your private key as well as encryp
 ```bash
 gpg --decrypt --output <decrypted-message> <encrypted-file>.asc
 ```
+
+### Using GPG To Sign Commits
+
+1. Install `pinentry-mac` (for storing GPG password in keychain on Mac)
+```bash
+brew install pinentry-mac
+```
+2. Set pinentry-mac as GPG pinentry program
+```bash
+mkdir ~/.gnupg
+echo "use-agent" >> ~/.gnupg/gpg.conf
+echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+echo "export GPG_TTY=$(tty)" >> ~/.zshrc
+source ~/.zshrc
+```
+*Use `/opt/homebrew` for Apple Silicon; use `/usr/local` for x86*
+
+3. Generate GPG Key
+```bash
+gpg --full-generate-key
+```
+4. List the key ID
+```bash
+gpg --list-keys --keyid-format LONG
+```
+*The ID is listed on the first line after the algorithm*
+
+5. Configure Git
+```bash
+git config --global user.signingkey KEY-ID
+git config --global commit.gpgsign true
+```
+6. Add public key to GitHub
+```bash
+gpg --armor --export KEY-ID
+```
+*Add the output of this to GitHub*
