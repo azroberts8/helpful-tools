@@ -12,6 +12,7 @@ A collection of simple tools, commands & solutions that I'll likely need again. 
  - **[Secure SSH Keygen (2024)](./SSH-Keygen)**
  - **[Creating & Using GPG Keys](./gpg-usage)**
  - **[WiFi Cracking with Aircrack](./wifi-pwd-cracking)**
+ - **[Playing/Ripping Blurays in VLC](./Bluray-in-VLC)**
 
 ## Installing Docker on Linux
 
