@@ -13,6 +13,7 @@ A collection of simple tools, commands & solutions that I'll likely need again. 
  - **[Creating & Using GPG Keys](./gpg-usage)**
  - **[WiFi Cracking with Aircrack](./wifi-pwd-cracking)**
  - **[Playing/Ripping Blurays in VLC](./Bluray-in-VLC)**
+ - **[Custom Armbian Build](./armbian-build)**
 
 ## Installing Docker on Linux
 
