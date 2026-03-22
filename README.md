@@ -1,5 +1,8 @@
-# Helpful Tools
 A collection of simple tools, commands & solutions that I'll likely need again. Small solutions are featured directly on this page while more involved solutions are linked to additional pages. Find this repo on GitHub here: https://github.com/azroberts8/helpful-tools
+
+## Simple Scripts
+
+ - **[Bittorrent Movies](./getmovie.py)**
 
 ## Deeper Guides
 
