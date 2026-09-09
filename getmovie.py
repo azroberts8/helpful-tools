@@ -6,12 +6,9 @@ import os
 import argparse
 import requests
 
-# TODO: Change qbittorrent auth to token
-
 YTS_API = "https://movies-api.accel.li/api/v2"
 QB_URL = os.getenv('BITTORRENT_URL', '')
-QB_USER = os.getenv('BITTORRENT_USER', '')
-QB_PASSWORD = os.getenv('BITTORRENT_PASSWORD', '')
+QB_API_KEY = os.getenv('BITTORRENT_API_KEY', '')
 
 TRACKERS = [
     "udp://open.demonii.com:1337/announce",
@@ -46,22 +43,17 @@ def pick_torrent(torrents: list[dict]) -> dict | None:
 def build_magnet(hash: str, name: str, year: str, quality: str) -> str:
 	dn = quote(f"{name} ({year}) [{quality}]")
 	trackers = "&".join(f"tr={quote(t)}" for t in TRACKERS)
-	return f"magnet:?xt=urn:btih:{hash}&dn={dn}&trackers"
+	return f"magnet:?xt=urn:btih:{hash}&dn={dn}&{trackers}"
 
 def add_to_qbittorrent(magnet: str) -> None:
-	session = requests.Session()
-	resp = session.post(
-		f"{QB_URL}/api/v2/auth/login",
-		data={"username": QB_USER, "password": QB_PASSWORD}
-	)
-	if resp.text.strip() != "Ok.":
-		sys.exit(f"qBittorrent login failed: {resp.text}")
-	resp = session.post(
+	headers = {"Authorization": f"Bearer {QB_API_KEY}", "Referer": QB_URL}
+	resp = requests.post(
 		f"{QB_URL}/api/v2/torrents/add",
+		headers=headers,
 		data={"urls": magnet, "savepath": "/movies", "seedingTimeLimit": 15}
 	)
-	if resp.text.strip() != "Ok.":
-		sys.exit(f"Failed to add torrent: {resp.text}")
+	if resp.status_code != 200:
+		sys.exit(f"Failed to add torrent: {resp.status_code} {resp.text}")
 
 def main():
 	parser = argparse.ArgumentParser()
